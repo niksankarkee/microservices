@@ -31,7 +31,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     data: {
       id: commentId,
       content,
-      postId: req.params.id,
+      paramId: req.params.id,
     },
   });
 
@@ -39,8 +39,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-  console.log('Recived event', req.body.type);
-
+  console.log('Recived', req.body.type);
   res.send({});
 });
 
