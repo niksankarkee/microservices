@@ -23,9 +23,9 @@ metadata:
   name: query-srv
 spec:
   selector:
-    app: moderation
+    app: query
   ports:
-    - name: moderation
+    - name: query
       protocol: TCP
       port: 4002
       targetPort: 4002

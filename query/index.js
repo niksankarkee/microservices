@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ const handleEvent = (type, data) => {
     const { id, content, postId, status } = data;
 
     const post = posts[postId];
-    const comment = post.comments.find((comment) => {
+    const comment = post.comments.find(comment => {
       return comment.id === id;
     });
 
@@ -54,7 +54,8 @@ app.listen(4002, async () => {
   const res = await axios.get('http://event-bus-srv:4005/events');
 
   for (let event of res.data) {
-    console.log('Processing event: ', event.type);
+    console.log('Processing event:', event.type);
+
     handleEvent(event.type, event.data);
   }
 });

@@ -2,9 +2,9 @@ import React from 'react';
 import PostCreate from './PostCreate';
 import PostList from './PostList';
 
-const App = () => {
+export default () => {
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Create Post</h1>
       <PostCreate />
       <hr />
@@ -13,5 +13,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
