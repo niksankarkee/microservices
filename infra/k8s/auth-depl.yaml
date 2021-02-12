@@ -1,30 +1,4 @@
 # For google cloud
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: auth-depl
-spec:
-  replicas: 1
-  selector: 
-    matchLabels:
-      app: auth
-  template:
-    metadata:
-      labels:
-        app: auth
-    spec:
-      containers:
-        - name: auth
-          image: us.gcr.io/ticketing-dev-303802/auth
-          env:
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-secret
-                  key: JWT_KEY
-
-# For google cloud end
-
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
@@ -41,13 +15,39 @@ spec:
 #     spec:
 #       containers:
 #         - name: auth
-#           image: niksankarkee/auth
+#           image: us.gcr.io/ticketing-dev-303802/auth
 #           env:
 #             - name: JWT_KEY
 #               valueFrom:
 #                 secretKeyRef:
 #                   name: jwt-secret
 #                   key: JWT_KEY
+
+# For google cloud end
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: niksankarkee/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
 ---
 apiVersion: v1
 kind: Service
