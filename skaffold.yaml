@@ -7,10 +7,28 @@ deploy:
 build:
   local:
     push: false
-  # googleCloudBuild:
-  #   projectId: ticketing-dev-303802
   artifacts:
     - image: niksankarkee/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+            
+#For google cloud 
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  googleCloudBuild:
+    projectId: ticketing-dev-303802
+  artifacts:
+    - image: us.gcr.io/ticketing-dev-303802/auth
       context: auth
       docker:
         dockerfile: Dockerfile
