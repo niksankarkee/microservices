@@ -24,7 +24,14 @@
 #         manual:
 #           - src: '**/*.js'
 #             dest: .
-            
+#     - image: niksankarkee/tickets
+#       context: tickets
+#       docker:
+#         dockerfile: Dockerfile
+#       sync:
+#         manual:
+#           - src: 'src/**/*.ts'
+#             dest: .            
             
 #For google cloud 
 apiVersion: skaffold/v2alpha3
@@ -52,4 +59,12 @@ build:
       sync:
         manual:
           - src: '**/*.js'
+            dest: .
+    - image: us.gcr.io/ticketing-dev-303802/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
             dest: .
