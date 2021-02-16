@@ -27,29 +27,29 @@ build:
             
             
 #For google cloud 
-apiVersion: skaffold/v2alpha3
-kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/k8s/*
-build:
-  googleCloudBuild:
-    projectId: ticketing-dev-303802
-  artifacts:
-    - image: us.gcr.io/ticketing-dev-303802/auth
-      context: auth
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: us.gcr.io/ticketing-dev-303802/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.js'
-            dest: .
+# apiVersion: skaffold/v2alpha3
+# kind: Config
+# deploy:
+#   kubectl:
+#     manifests:
+#       - ./infra/k8s/*
+# build:
+#   googleCloudBuild:
+#     projectId: ticketing-dev-303802
+#   artifacts:
+#     - image: us.gcr.io/ticketing-dev-303802/auth
+#       context: auth
+#       docker:
+#         dockerfile: Dockerfile
+#       sync:
+#         manual:
+#           - src: 'src/**/*.ts'
+#             dest: .
+#     - image: us.gcr.io/ticketing-dev-303802/client
+#       context: client
+#       docker:
+#         dockerfile: Dockerfile
+#       sync:
+#         manual:
+#           - src: '**/*.js'
+#             dest: .
