@@ -46,10 +46,10 @@ build:
 #           - src: 'src/**/*.ts'
 #             dest: .
 #     - image: us.gcr.io/ticketing-dev-303802/client
-#       context: auth
+#       context: client
 #       docker:
 #         dockerfile: Dockerfile
 #       sync:
 #         manual:
-#           - src: '**/*.ts'
+#           - src: '**/*.js'
 #             dest: .

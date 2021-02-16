@@ -15,7 +15,7 @@
 #     spec:
 #       containers:
 #         - name: client
-#           image: us.gcr.io/ticketing-dev-303802/auth
+#           image: us.gcr.io/ticketing-dev-303802/client
 ## end for google cloud
 
 apiVersion: apps/v1
