@@ -1,32 +1,4 @@
 ﻿# For google cloud
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: tickets-depl
-# spec:
-#   replicas: 1
-#   selector: 
-#     matchLabels:
-#       app: tickets
-#   template:
-#     metadata:
-#       labels:
-#         app: tickets
-#     spec:
-#       containers:
-#         - name: tickets
-#           image: us.gcr.io/ticketing-dev-303802/tickets
-#           env:
-#             - name: MONGO_URI
-#               value: 'mongodb://tickets-mongo-srv:27017/tickets'
-#             - name: JWT_KEY
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: jwt-secret
-#                   key: JWT_KEY
-
-# For google cloud end
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -43,7 +15,7 @@ spec:
     spec:
       containers:
         - name: tickets
-          image: niksankarkee/tickets
+          image: us.gcr.io/ticketing-dev-303802/tickets
           env:
             - name: MONGO_URI
               value: 'mongodb://tickets-mongo-srv:27017/tickets'
@@ -52,6 +24,34 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+
+# For google cloud end
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: tickets-depl
+# spec:
+#   replicas: 1
+#   selector: 
+#     matchLabels:
+#       app: tickets
+#   template:
+#     metadata:
+#       labels:
+#         app: tickets
+#     spec:
+#       containers:
+#         - name: tickets
+#           image: niksankarkee/tickets
+#           env:
+#             - name: MONGO_URI
+#               value: 'mongodb://tickets-mongo-srv:27017/tickets'
+#             - name: JWT_KEY
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: jwt-secret
+#                   key: JWT_KEY
 ---
 apiVersion: v1
 kind: Service
