@@ -1,23 +1,4 @@
 ## for Google cloud
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: client-depl
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: client
-  template:
-    metadata:
-      labels:
-        app: client
-    spec:
-      containers:
-        - name: client
-          image: us.gcr.io/ticketing-dev-303802/client
-## end for google cloud
-
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
@@ -34,7 +15,26 @@ spec:
 #     spec:
 #       containers:
 #         - name: client
-#           image: niksankarkee/client
+#           image: us.gcr.io/ticketing-dev-303802/client
+## end for google cloud
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: niksankarkee/client
 
 ---
 apiVersion: v1
